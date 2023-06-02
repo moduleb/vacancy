@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: vacancy_app
+    build:
+      context: .
+    image: goodwin954/vacancy_test
+    ports:
+      - "8000:8000"
+    depends_on:
+      pg:
+        condition: service_healthy
+  pg:
+    container_name: vacancy_pg
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: vacancy
+      POSTGRES_PASSWORD: vacancy
+      POSTGRES_DB: vacancy
+      PGPORT: 5432
+    ports:
+      - "5435:5432"
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U vacancy" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
