@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "vacancy-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["Яшин Роман"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.95.2"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+sqlalchemy = "^2.0.15"
+pydantic = "^1.10.8"
+environs = "^9.5.0"
+faker = "^18.9.0"
+colorlog = "^6.7.0"
+python-multipart = "^0.0.6"
+pyjwt = "^2.7.0"
+psycopg2-binary = "^2.9.6"
+
+
+[tool.poetry.dev-dependencies]
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
